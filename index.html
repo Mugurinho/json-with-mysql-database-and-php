@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<style>
+p, h2, h4{
+	font-family: calibri;
+}
+</style>
+<body>
+
+<h2>HTML, JSON with PHP file and MySQL database and table on a XAMPP server.</h2>
+<p>This html file gets the data as JSON from a PHP file on the XAMPP server: index.php</p>
+<p>Database location: http://localhost/phpmyadmin/ | name: ucl_ug_2020 | table: prog_info</p>
+<p id="demo"></p>
+
+<script>
+var obj, dbParam, xmlhttp, test;
+obj = { "table":"prog_info", "limit":10 };
+dbParam = JSON.stringify(obj);
+xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    document.getElementById("demo").innerHTML = this.responseText;
+  }
+};
+xmlhttp.open("POST", "index.php?x=" + dbParam, true);
+xmlhttp.send();
+</script>
+
+</body>
+</html>

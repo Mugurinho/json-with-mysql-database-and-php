@@ -1,0 +1,4 @@
+HTML, JSON with PHP file and MySQL database and table on a XAMPP server.
+This html file gets the data as JSON from a PHP file on the XAMPP server: index.php
+Database location: http://localhost/phpmyadmin/ | name: ucl_ug_2020 | table: prog_info
+The test php file is for hardcoding and testing purposes. 
