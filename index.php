@@ -31,7 +31,6 @@ while ($row = mysqli_fetch_assoc($result))
 {
   $prog_array[] = $row;
 }
-
 echo "<h4>Convert the array to string with encode()</h4>";
 $encode = json_encode($prog_array);
 print_r($encode);
@@ -51,11 +50,20 @@ $clean = json_decode($encode);
 echo "--Single result example--<br>";
 echo $clean[2]->progTitle;
 
-echo "<br>--Looping through the array--<br>";
+//count the displayed
+$count = count($clean);
+//count all the rows from the db https://stackoverflow.com/questions/6655628/mysql-count-total-number-of-rows-in-php
+$sql = mysqli_query($conn, "SELECT count(1) FROM prog_info");
+$rows = mysqli_fetch_array($sql);
+$total = $rows[0];
+//echo "Total programmes: " . $total;
+
+echo "<br>--Looping through the array: " . "$total" . "--<br>"; 
 //looping through, be aware limit has been set to 10 rows in query
 foreach($clean as $title) {
   echo $title->progTitle . "<br>";
 }
+
 
 
 //if any errors
